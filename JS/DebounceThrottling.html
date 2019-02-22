@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Debounce and Throttling</title>
+	<style>
+		*{margin:0;padding: 0;}
+		#deb, #thr{
+			background-color: #ccc;
+			height: 150px;
+			color: white;
+			margin-bottom: 30px;
+			text-align: center;
+			line-height: 150px;
+			font-size: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div id="deb"></div>
+	<div id="thr"></div>
+	<script>
+		let count1 = 0,
+			count2 = 0,
+			deb = document.getElementById('deb'),
+			thr = document.getElementById('thr');
+
+		let debFn = function(e){						
+			e.target.innerHTML = ++count1;			
+		}
+
+		let thrFn = function(e){
+			e.target.innerHTML = ++count2;
+		}		
+
+		deb.addEventListener('mousemove', Debounce(debFn, 300) );
+		thr.addEventListener('mousemove', Throttling(thrFn, 300) );
+
+		function  Debounce(fn, time){
+			let timer = null;
+			return function(){				
+				let context = this;
+				let arg = arguments;
+				if(timer) clearTimeout(timer);
+				timer = setTimeout(()=>{
+					fn.apply(context, arg);
+				},time);
+			}
+		}
+
+		function Throttling(fn, time){
+			let timer = null;
+			return function(){
+				let context = this,
+					arg = arguments;
+				if(!timer){
+					timer = setTimeout(function(){						
+						fn.apply(context, arg);
+						timer = null;
+					},time);
+				}
+			}
+		}
+
+
+		let a = ()=>{
+			return [].slice.apply(arguments);
+		}
+		let b = function(){
+			return [].slice.apply(arguments);
+		}
+
+		console.log(a(1,2,3));
+		console.log(b(2,3,4));
+	</script>
+</body>
+</html>
