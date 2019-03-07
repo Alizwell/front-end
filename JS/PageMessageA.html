@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A</title>
+</head>
+<body>
+<button>click2</button>
+</body>
+<script>
+      document.querySelector('button').onclick = function(){
+               localStorage.setItem('Num', Math.random()*10);
+      }
+
+      window.addEventListener("storage", function (e) {
+         console.log(e)
+        console.log(e.newValue)
+        alert('来自其他页面的localstorage');
+	  });
+
+     	var orignalSetItem = localStorage.setItem;
+	    localStorage.setItem = function(key,newValue){
+	        var setItemEvent = new Event("setItemEvent");
+	        setItemEvent.newValue = newValue;
+	        window.dispatchEvent(setItemEvent);
+	        alert('来自本页面的localstorage');
+	        orignalSetItem.apply(this,arguments);
+	    }
+	    window.addEventListener("setItemEvent", function (e) {
+	        alert(e.newValue);
+	    });
+</script>
+</html>

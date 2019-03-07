@@ -63,15 +63,34 @@
 		}
 
 
-		let a = ()=>{
-			return [].slice.apply(arguments);
-		}
-		let b = function(){
-			return [].slice.apply(arguments);
-		}
+		// let a = ()=>{
+		// 	return [].slice.apply(arguments);
+		// }
+		// let b = function(){
+		// 	return [].slice.apply(arguments);
+		// }
 
-		console.log(a(1,2,3));
-		console.log(b(2,3,4));
+		// console.log(a(1,2,3));
+		// console.log(b(2,3,4));
+
+
+		var orignalSetItem = localStorage.setItem;
+	    localStorage.setItem = function(key,newValue){
+	        var setItemEvent = new Event("setItemEvent");
+	        setItemEvent.newValue = newValue;
+	        window.dispatchEvent(setItemEvent);
+	        orignalSetItem.apply(this,arguments);
+	    }
+	    window.addEventListener("setItemEvent", function (e) {
+	        alert(e.newValue);
+	    });
+	    
+
+
+
+		window.addEventListener("storage", function(e){
+			console.log(e.key+'===='+e.newValue);
+		});
 	</script>
 </body>
 </html>
