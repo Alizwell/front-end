@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>lazyLoad</title>
+<style type="text/css" media="all">
+body,ul,li { padding:0; margin:0; }
+body { font-size:12px; -webkit-user-select:none; -webkit-text-size-adjust:none; font-family:helvetica;}
+.lazyLoad ul li {height:200px; border:1px solid red; margin-bottom:2px; overflow: hidden; text-align:center;}
+</style>
+</head>
+<body>
+    <div class="lazyLoad">
+        <ul>
+            <li><span data-src="https://www.geekjc.com">我不是图片啦</span></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/1878622-84d7e8ffd5882af7?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/1202579-03d9f3dacd9e8697?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/11760235-b2517ddd8b4bc896.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/11680122-522e8f7b1f64082e.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/743373-28668727a3be37ff?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/15072941-5faaf2d806a8bc7b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/2040948-c7af057ed5608c37?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+            <li><img data-src="//upload-images.jianshu.io/upload_images/11994138-ec1c4649bc8a71e7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt=""></li>
+        </ul>
+    </div>
+
+    <script>
+        function lazyload(){
+            console.log(1);
+            var viewHeight = document.documentElement.clientHeight; //获取可视区高度
+            var eles=document.querySelectorAll('img[data-src]'); 
+            Array.prototype.forEach.call(eles,function(item,index){
+               
+                if(item.getAttribute('data-src')==="") return;
+                 var rect = item.getBoundingClientRect();
+                 // 用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置
+                if(rect.bottom>=0 && rect.top < viewHeight){
+                    item.src = item.getAttribute('data-src');
+                    item.removeAttribute("data-src");//移除属性，下次不再遍历                    
+                }
+            })
+        }
+        lazyload();//刚开始还没滚动屏幕时，要先触发一次函数，初始化首页的页面图片
+        document.addEventListener("scroll",lazyload);
+    </script>
+</body>
+</html>
