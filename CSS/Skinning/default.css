@@ -1,0 +1,5 @@
+.box{
+	outline: 5px solid;
+	outline-offset: -5px;
+}
+
