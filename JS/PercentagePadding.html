@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Padding百分比</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.outer{
+			width: 100%;
+		}
+		.wrap{
+			vertical-align: top;
+			display: inline-block;
+			width: 49%;			
+			padding-bottom: 60%;			
+			margin-bottom: 30px;
+			position: relative;
+		}
+		.wrap2{
+			vertical-align: top;
+			display: inline-block;
+			width: 49%;				
+		}
+		div > img{
+			width: 100%;
+			height: 100%;
+		}
+		.item2{
+			position: absolute;			
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div  class="wrap">
+			<img  class="item2" src="../Img/long.png">	
+		</div>
+		<div  class="wrap2">
+			<img src="../Img/long.png">		
+		</div>
+	</div>	
+</body>
+</html>
