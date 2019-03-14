@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>换肤</title>	
+	<link rel="stylesheet" href="../CSS/Skinning/default.css"  title="默认">
+	<link rel="stylesheet alternate" href="../CSS/Skinning/red.css"  title="红色">
+	<link rel="stylesheet alternate" href="../CSS/Skinning/green.css" title="绿色">
+	<style>
+		.box{
+			display: inline-block;
+		    padding: 10px;		    
+		}
+		label {
+			display: inline-block;
+			width: 14px; height: 14px;
+			background-color: #333;
+			font-size: 0;
+			vertical-align: middle;
+			margin-right: 3px;
+		}
+		[type="radio"] {
+			position: absolute;
+			clip: rect(0 0 0 0);	
+		}
+		[for="red"] {
+			background-color: #cd0000;
+		}
+		[for="green"] {
+			background-color: green;
+		}
+		:checked + label {
+			outline: 2px solid #3FF;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="../Img/book.jpg">
+		<p>景色是？文字颜色是</p>
+	</div>
+	<p>
+		<input id="default"  type="radio" name="skin" value="default.css" checked>
+		<label for="default">默认</label>
+		<input id="red" type="radio" name="skin" value="red.css"><label for="red">红色</label>
+		<input id="green" type="radio" name="skin" value="green.css"><label for="green">绿色</label>
+	</p>
+	<script>
+		var eleLinks = document.querySelectorAll('link[title]');
+		var eleRadios = document.querySelectorAll('input[type="radio"]');
+		[].slice.call(eleRadios).forEach(function(radio){
+			radio.addEventListener('click',function(){
+				var value = this.value;
+				[].slice.call(eleLinks).forEach(function(link){
+					link.disabled = true;					
+					if(link.getAttribute('href').indexOf(value) > -1){
+						link.disabled = false;
+					}
+				})
+			})
+		})
+	</script>
+</body>
+</html>
