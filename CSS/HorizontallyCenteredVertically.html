@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垂直居中</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}		
+		h2{text-align: center;}
+	</style>
+</head>
+<body>	
+	
+	<style>
+    *{
+      margin: 0;
+      padding: 0;
+    }   
+    h2{text-align: center;}
+		.flex{
+			display: flex;
+		}
+		.grid{display: grid;}
+		.box{			
+			border: 1px solid red;
+			width: 80%;
+			height: 150px;
+			margin: auto;
+		}
+		.content{			
+			width: 400px;
+			background-color: #ccc;			
+		}
+		.margin-auto{margin: auto;}
+		.height-100{height: 100px;}
+		.relative{position: relative;}
+		.abs{position: absolute;}
+		.left_right{
+			left: 0;
+			right: 0;
+		}
+		.top_btm{
+			top: 0;
+			bottom: 0;
+		}
+		.margin-top-50{
+      margin-top: -50px;
+    }
+    .top-50{top:50%;} 
+    .left-50{left:50%;}
+		.translate_50{
+			transform: translate(-50%, -50%);
+		}
+    .translateY_50{
+      transform: translateY(-50%);
+    }
+		.table-cell{
+			display: table-cell;
+			min-width: 400px;
+			vertical-align: middle;
+			text-align: center;	
+		}
+		.inline-block{display: inline-block;text-align: center;}
+		.line-height-150{line-height: 150px;}
+		.line-height-2{line-height: 2;}
+		.vertical-align-middle{vertical-align:middle;}
+		.text-center{text-align: center;}
+    .before::before{
+      display: inline-block;
+      content: '';
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+    .flex-before{
+      flex-direction: column;
+      align-items: center;
+    }
+    .flex-before::before{
+      flex-grow: .5;
+      content: '';
+    }
+    .flex-wrap{flex-wrap: wrap;}
+    .flex-before-after::before,
+    .flex-before-after::after{
+      content: '';
+      width: 100%;
+      display: block;
+    }
+    .align-items-center{align-items: center;}    
+    .align-content-center{align-content: center;}
+    .justify-content-center{justify-content: center;}    
+    .align-self-center{align-self: center;}
+    .place-items-center{place-items:center;}
+    .place-content-center{place-content:center;}
+    .place-self-center{place-self:center;}
+    .top-calc{
+      top:calc( (100% - 100px) / 2);
+    }
+    .grid-template{
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: 1fr auto 1fr;
+      grid-template-areas: 
+      '. . .'
+      '. ttt .'
+      '. . .';
+    }
+    .grid-area-amos{
+      grid-area: ttt;
+    }
+    .padding{
+      padding: 50px 0;
+    }
+    .height-auto{
+      height: auto;
+    }
+    .table{
+      display: table;
+      width: 80%;
+      margin: auto;
+    }
+	</style>	
+  <h2>1. line-height</h2>
+  <div class="box  text-center  line-height-150  margin-auto">
+    I am text
+  </div>
+
+  <h2>2. inline-block+vertical-align</h2>
+  <div class="box text-center line-height-150">
+    <div class="content inline-block vertical-align-middle line-height-2">
+      立马来看Amos实际完成的<a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+        CSS3精美相册效果    </a>
+      效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+  </div>  
+  
+<h2>3. :before+inline-block</h2>
+<div class="box text-center  before">
+  <div class="content inline-block vertical-align-middle">
+    立马来看Amos实际完成的<a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+  
+
+<h2>4. absolute+top+transform</h2>
+<div class="box relative">
+  <div class="content height-100 abs top-50 left-50   translate_50">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+    
+
+
+  <h2>5. absolute + margin-auto</h2>
+  <div class="box relative">
+    <div class="content margin-auto  height-100 abs left_right top_btm">
+      立马来看Amos实际完成的    
+      <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+        CSS3精美相册效果    </a>
+      效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+  </div>
+
+  <h2>6. relative + calc </h2>
+<div class="box">
+  <div class="content text-center top-calc relative margin-auto height-100">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>7. relative + translateY </h2>
+<div class="box">
+  <div class="content text-center top-50 relative margin-auto translateY_50">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>8. relative + margin </h2>
+<div class="box">
+  <div class="content text-center height-100  top-50 relative margin-auto margin-top-50">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+
+<h2>9. flex + margin-auto</h2>
+<div class="box flex">
+  <div class="content margin-auto">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+  
+<h2>10. flex + align-items</h2>
+<div class="box flex align-items-center  justify-content-center">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>11. flex + align-self</h2>
+<div class="box flex   justify-content-center">
+  <div class="content align-self-center text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>12. flex + align-content + before + after + flex-wrap</h2>
+<div class="box flex flex-wrap align-content-center   justify-content-center  flex-before-after">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>13. flex + align-items + before + flex-direction+ flex-grow</h2>
+<div class="box flex  flex-before">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+
+
+
+
+<h2>14. grid + margin-auto</h2>
+<div class="box grid">
+  <div class="content margin-auto">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>15. grid + align-items</h2>
+<div class="box grid align-items-center  justify-content-center">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>16. grid + align-content</h2>
+<div class="box grid align-content-center  justify-content-center">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+
+<h2>17. grid + align-self</h2>
+<div class="box grid  justify-content-center">
+  <div class="content text-center align-self-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>18. grid + place-items</h2>
+<div class="box grid place-items-center">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>19. grid + place-content</h2>
+<div class="box grid   place-content-center">
+  <div class="content text-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>20. grid + place-self</h2>
+<div class="box grid">
+  <div class="content text-center place-self-center">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>21. grid + grid-template + grid-area</h2>
+<div class="box grid  grid-template">
+  <div class="content text-center  grid-area-amos">
+    立马来看Amos实际完成的    
+    <a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>
+
+<h2>22. table-cell</h2>
+<div  class="table">
+  <div class="box table-cell">
+    <div class="content margin-auto">
+      立马来看Amos实际完成的<a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+        CSS3精美相册效果    </a>
+      效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+  </div>  
+</div>
+
+<h2>23. padding</h2>
+<div class="box  padding   height-auto">
+  <div class="content margin-auto text-center">
+    立马来看Amos实际完成的<a href="http://csscoke.com/2015/07/31/nth-child_rwd_album/">
+      CSS3精美相册效果    </a>
+    效果吧！別忘了拖拉一下窗口看看 RWD 效果喔！  </div>
+</div>  
+
+
+
+<!-- write -->
+<h2>24. write-mode ....此处省略，对此方法无兴趣</h2>
+</body>
+</html>
