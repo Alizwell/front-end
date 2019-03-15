@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html{
+			font-size: 50px;	
+		}
+		/* 全局样式 */
+		.letter {
+		    color: #2486ff;
+		    border-style: solid;
+		    border-width: .5em;
+		    display: inline-block;
+		    position: relative;
+		}
+		.letter:after {
+		    border-style: solid;
+		    border-width: .5em;
+		    content: '';
+		    position: absolute;
+		}
+		/* 单个字母样式 */
+		.letter[data-char="A"] {
+		    border-bottom: none;
+		    border-radius: 1em 1em 0 0;
+		    height: 2.05em;
+		    margin-top: -.05em;
+		    width: 1em;
+		}
+		.letter[data-char="A"]:after {
+		    border-bottom: none;
+		    border-left: none;
+		    border-right: none;
+		    left: 0;
+		    right: 0;
+		    top: .75em;
+		}
+	</style>
+</head>
+<body>
+	<span class="letter" data-char="A"></span>
+</body>
+</html>
