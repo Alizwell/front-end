@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS渐变</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body {
+		    background-image: linear-gradient(to right top, #ffcc00 50%, #eee 50%);
+		    background-size: 100% calc(100% - 100vh + 5px);
+		    background-repeat: no-repeat;
+		}
+		body:before{
+			position: fixed;
+			content: '';			
+			top: 5px;
+			bottom: 0;
+			width: 100%;
+			background-color: white;
+			z-index: -1;
+		}
+		.content{
+			height: 2000px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		content
+		contentcontent
+		contentcontentcontentcontent
+		contentcontentcontentcontentcontentcontentcontentcontent
+		contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+	</div>
+</body>
+</html>
