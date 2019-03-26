@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>absolute&overflowHidden</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wraper{
+			overflow: hidden;
+			height: 200px;
+			width: 50%;
+			margin: 50px auto;
+			text-align: center;
+			background-color: green;
+		}
+
+		.component{
+			position: relative;
+			margin-top: 100px;
+			display: inline-block;			
+			background-color: yellow;
+		}
+		.component:hover  .tooltips{
+			display: inline-block;
+		}
+		.tooltips::before{
+			position: absolute;
+			display: inline-block;
+
+			top: -5px;
+			left: 50%;
+			margin-left: -5px;
+			transform: rotate(45deg);
+			content: '';
+			width: 8px;
+			height: 8px;
+			background-color: red;			
+			border: 0;
+			border-top: 1px;
+			border-left: 1px;
+			border-color: #ccc;
+			border-style: solid;
+		}
+		.tooltips{
+			display: none;
+			padding: 5px;
+			line-height: 20px;	
+			width: 150px;
+			transform: translateX(-50%);
+			margin-top: 10px;
+			background-color: red;
+			position: absolute;
+			border:1px solid #ccc;
+		}
+		.fix-overflow{
+			position: absolute;
+			width: inherit;
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<span class="component">
+			Please  hover me.
+			<div class="tooltips">more content more content more content more content more content more content</div>
+		</span>
+	</div>
+
+	<div class="wraper">
+		<div  class="fix-overflow">
+			<span class="component">
+				Please  hover me.
+				<div class="tooltips">more content more content more content more content more content more content</div>
+			</span>
+		</div>		
+	</div>
+</body>
+</html>
